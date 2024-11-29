@@ -1,9 +1,14 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+
 function App() {
-    return (
-        <>
-            <h1>hello</h1>
-        </>
-    )
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
