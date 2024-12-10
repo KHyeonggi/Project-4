@@ -1,0 +1,101 @@
+/* LoginContainer 스타일 */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* LoginBox 스타일 */
+.login-box {
+    width: 400px;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo 스타일 */
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Form 스타일 */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* InputGroup 스타일 */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Label 스타일 */
+.label {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Input 스타일 */
+.input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* LoginButton 스타일 */
+.login-button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* KakaoButton 스타일 */
+.kakao-button {
+    background-color: #fee500;
+    color: #000000;
+}
+
+.kakao-button:hover {
+    background-color: #fdd835;
+}
+
+/* LinkGroup 스타일 */
+.link-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* StyledLink 스타일 */
+.styled-link {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.styled-link:hover {
+    color: #007bff;
+}
