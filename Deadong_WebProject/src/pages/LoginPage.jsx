@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../index.css' // CSS 파일 import
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     const [loginData, setLoginData] = useState({
         userId: '',
         password: '',
@@ -15,6 +16,10 @@ const LoginPage = () => {
 
     const handleKakaoLogin = () => {
         // 카카오 로그인 로직 구현
+    }
+
+    const handleFabClick = () => {
+        navigate('/clubs');
     }
 
     return (
@@ -66,6 +71,14 @@ const LoginPage = () => {
                     </div>
                 </form>
             </div>
+            
+            <button 
+                className="fab" 
+                onClick={handleFabClick}
+                title="동아리 검색"
+            >
+                🔍
+            </button>
         </div>
     )
 }
