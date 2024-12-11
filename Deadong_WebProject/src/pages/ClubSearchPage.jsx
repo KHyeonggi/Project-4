@@ -1,52 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import ClubCard from '../components/ClubCard';
-import '../index.css'; // CSS 파일 import
+import '../index.css';
 
 const ClubSearchPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [clubs, setClubs] = useState([
-        {
-            name: '동아리 A',
-            description: '동아리 A의 한 줄 소개',
-            tags: ['태그1', '태그2', '태그3'],
-            image: 'path/to/imageA.jpg',
-        },
-        {
-            name: '동아리 B',
-            description: '동아리 B의 한 줄 소개',
-            tags: ['태그1', '태그2', '태그3'],
-            image: 'path/to/imageB.jpg',
-        },
-        {
-            name: '동아리 C',
-            description: '동아리 B의 한 줄 소개',
-            tags: ['태그1', '태그2', '태그3'],
-            image: 'path/to/imageB.jpg',
-        },
-        {
-            name: '동아리 F',
-            description: '동아리 A의 한 줄 소개',
-            tags: ['태그1', '태그2', '태그3'],
-            image: 'path/to/imageA.jpg',
-        },
-        {
-            name: '동아리 E',
-            description: '동아리 B의 한 줄 소개',
-            tags: ['태그1', '태그2', '태그3'],
-            image: 'path/to/imageB.jpg',
-        },
-        {
-            name: '동아리 D',
-            description: '동아리 B의 한 줄 소개',
-            tags: ['태그1', '태그2', '태그3'],
-            image: 'path/to/imageB.jpg',
-        },
-        // 더 많은 동아리 데이터 추가
-    ]);
+    const [clubs, setClubs] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchClubs = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, 'clubs'));
+                const clubsData = querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                setClubs(clubsData);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching clubs:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchClubs();
+    }, []);
 
     const filteredClubs = clubs.filter(club =>
         club.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    if (loading) {
+        return <div>로딩 중...</div>;
+    }
 
     return (
         <div className="club-search-page">
@@ -59,8 +47,8 @@ const ClubSearchPage = () => {
                 className="search-input"
             />
             <div className="club-list">
-                {filteredClubs.map((club, index) => (
-                    <ClubCard key={index} club={club} />
+                {filteredClubs.map((club) => (
+                    <ClubCard key={club.id} club={club} />
                 ))}
             </div>
         </div>
