@@ -28,7 +28,6 @@ const ClubRegistrationPage = () => {
             tags: newTags
         }));
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

@@ -8,14 +8,14 @@ import config from './apikey'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: config.VITE_apiKey,
-    authDomain: config.VITE_authDomain,
-    databaseURL: config.VITE_databaseURL,
-    projectId: config.VITE_projectId,
-    storageBucket: config.VITE_storageBucket,
-    messagingSenderId: config.VITE_messagingSenderId,
-    appId: config.VITE_appId,
-    measurementId: config.VITE_measurementId,
+    apiKey: config.apiKey,
+    authDomain: config.authDomain,
+    databaseURL: config.databaseURL,
+    projectId: config.projectId,
+    storageBucket: config.storageBucket,
+    messagingSenderId: config.messagingSenderId,
+    appId: config.appId,
+    measurementId: config.measurementId,
 }
 
 // Initialize Firebase

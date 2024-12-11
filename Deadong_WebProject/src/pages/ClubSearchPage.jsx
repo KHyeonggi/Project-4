@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { db } from '../apikey';
 import ClubCard from '../components/ClubCard';
 import '../index.css';
 
 const ClubSearchPage = () => {
+    const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
     const [clubs, setClubs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -32,13 +34,25 @@ const ClubSearchPage = () => {
         club.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const handleRegisterClick = () => {
+        navigate('/register-club');
+    };
+
     if (loading) {
         return <div>로딩 중...</div>;
     }
 
     return (
         <div className="club-search-page">
-            <h1>동아리 검색</h1>
+            <div className="header">
+                <h1>동아리 검색</h1>
+                <button 
+                    className="register-button"
+                    onClick={handleRegisterClick}
+                >
+                    동아리 등록
+                </button>
+            </div>
             <input
                 type="text"
                 placeholder="동아리명을 입력하세요"
