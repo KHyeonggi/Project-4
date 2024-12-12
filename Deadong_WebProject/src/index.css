@@ -1,3 +1,10 @@
+/* 전체 페이지 스타일 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
 /* LoginContainer 스타일 */
 .login-container {
     display: flex;
@@ -260,6 +267,7 @@
 
 .header {
     display: flex;
+    flex-direction: row; /* 수평으로 배치 */
     justify-content: space-between; /* 좌우 콘텐츠를 양 끝으로 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
     margin: 0; /* 여백 제거 (필요에 따라 설정 가능) */
