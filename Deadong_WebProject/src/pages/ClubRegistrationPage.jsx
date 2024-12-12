@@ -8,7 +8,8 @@ const ClubRegistrationPage = () => {
         name: '',
         description: '',
         tags: ['', '', ''],
-        image: ''
+        image: '',
+        approved: false
     });
     const [message, setMessage] = useState('');
 
@@ -38,7 +39,8 @@ const ClubRegistrationPage = () => {
                 name: '',
                 description: '',
                 tags: ['', '', ''],
-                image: ''
+                image: '',
+                approved: false
             });
         } catch (error) {
             setMessage('오류가 발생했습니다: ' + error.message);

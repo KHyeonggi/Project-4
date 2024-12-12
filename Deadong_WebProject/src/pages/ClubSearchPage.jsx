@@ -15,11 +15,10 @@ const ClubSearchPage = () => {
         const fetchClubs = async () => {
             try {
                 const querySnapshot = await getDocs(collection(db, 'clubs'));
-                const clubsData = querySnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
-                setClubs(clubsData);
+                const clubs = querySnapshot.docs
+                    .map(doc => ({ id: doc.id, ...doc.data() }))
+                    .filter(club => club.approved);
+                setClubs(clubs);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching clubs:', error);

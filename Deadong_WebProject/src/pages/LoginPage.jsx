@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../index.css' // CSS 파일 import
 
 const LoginPage = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const [loginData, setLoginData] = useState({
         userId: '',
         password: '',
@@ -19,7 +19,7 @@ const LoginPage = () => {
     }
 
     const handleFabClick = () => {
-        navigate('/clubs');
+        navigate('/clubs')
     }
 
     return (
@@ -65,18 +65,14 @@ const LoginPage = () => {
                         <Link className="styled-link" to="/signup">
                             회원가입
                         </Link>
-                        <Link className="styled-link" to="/admin-login">
+                        <Link className="styled-link" to="/admin">
                             관리자 로그인
                         </Link>
                     </div>
                 </form>
             </div>
-            
-            <button 
-                className="fab" 
-                onClick={handleFabClick}
-                title="동아리 검색"
-            >
+
+            <button className="fab" onClick={handleFabClick} title="동아리 검색">
                 🔍
             </button>
         </div>
