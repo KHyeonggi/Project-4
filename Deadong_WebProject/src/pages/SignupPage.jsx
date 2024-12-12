@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import '../index.css' // CSS 파일 import
+import faceImage from '../assets/face.png';
+
 
 const SignupPage = () => {
     const [formData, setFormData] = useState({
@@ -26,7 +28,10 @@ const SignupPage = () => {
     return (
         <div className="signup-container">
             <div className="signup-box">
-                <h1 className="logo">회원가입</h1>
+                <div className="header">
+                     <img src={faceImage} alt="face" width="100" height="100" className="round-image" />
+                    <h1 className="logo">회원가입</h1>  
+                </div>
 
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="input-group">

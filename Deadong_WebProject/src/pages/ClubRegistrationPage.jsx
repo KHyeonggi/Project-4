@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../index.css';
+import faceImage from '../assets/face.png';
+import { useNavigate } from 'react-router-dom';
 
 const ClubRegistrationPage = () => {
+    const navigate = useNavigate();
     const [clubData, setClubData] = useState({
         name: '',
         description: '',
@@ -19,7 +22,10 @@ const ClubRegistrationPage = () => {
             [name]: value
         }));
     };
-
+    
+    const handleRegisterClick = () => {
+        navigate('/clubs');
+    };
     const handleTagChange = (index, value) => {
         const newTags = [...clubData.tags];
         newTags[index] = value;
@@ -47,7 +53,16 @@ const ClubRegistrationPage = () => {
 
     return (
         <div className="club-registration-page">
-            <h1>동아리 등록</h1>
+            <div className="header">
+            <img src={faceImage} alt="face" width="100" height="100" className="round-image" />
+                <h1>동아리 등록</h1>
+                <button 
+                    className="register-button"
+                    onClick={handleRegisterClick}
+                >
+                    동아리 목록
+                </button>
+            </div>
             {message && <div className="message">{message}</div>}
             
             <form onSubmit={handleSubmit} className="registration-form">

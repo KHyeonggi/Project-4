@@ -21,9 +21,12 @@
     text-align: center;
     margin-bottom: 30px;
     color: #333;
+    width: 100%; 
+    box-sizing: border-box;
+    align-items: center; /* 세로 중앙 정렬 */
+
 }
 
-/* Form 스타일 */
 .form {
     display: flex;
     flex-direction: column;
@@ -101,7 +104,7 @@
 }
 
 .club-search-page {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .search-input {
@@ -198,9 +201,9 @@
 }
 
 .club-registration-page {
-    max-width: 800px;
+    width: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .registration-form {
@@ -257,14 +260,15 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    background-color: #008751;
-    width: 100%;
-    padding: 1rem 0;
-
+    justify-content: space-between; /* 좌우 콘텐츠를 양 끝으로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    margin: 0; /* 여백 제거 (필요에 따라 설정 가능) */
+    background-color: #008751; /* 배경 색상 */
+    width: 100%; /* 부모 요소의 전체 너비 사용 */
+    padding: 1rem; /* 내부 여백 */
+    box-sizing: border-box; /* 패딩 포함한 너비 계산 */
 }
+
 
 .register-button {
     padding: 10px 20px;
@@ -285,7 +289,7 @@
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding:0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -342,7 +346,7 @@
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .header-container {
-        padding: 0 1rem;
+        padding: 1rem 1rem;
     }
     
     .profile-name {
@@ -354,3 +358,12 @@
         padding: 6px 12px;
     }
 } 
+/* 헤더 프로필사진 css(원형)*/
+.round-image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    padding-left: 10px;
+  }
+  

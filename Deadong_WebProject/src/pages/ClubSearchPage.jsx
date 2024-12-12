@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { db } from '../apikey';
 import ClubCard from '../components/ClubCard';
 import '../index.css';
+import faceImage from '../assets/face.png';
 
 const ClubSearchPage = () => {
     const navigate = useNavigate();
@@ -45,7 +46,8 @@ const ClubSearchPage = () => {
     return (
         <div className="club-search-page">
             <div className="header">
-                <h1>동아리 검색</h1>
+            <img src={faceImage} alt="face" width="100" height="100" className="round-image" />
+            <h1>동아리 검색</h1>
                 <button 
                     className="register-button"
                     onClick={handleRegisterClick}
