@@ -6,7 +6,7 @@ import ClubSearchPage from './pages/ClubSearchPage'
 import ClubRegistrationPage from './pages/ClubRegistrationPage';
 import ClubApplication from './pages/ClubApplication';
 import AdminPage from './pages/AdminPage';
-
+import ClubDetailPage from './pages/ClubDetailPage';
 function App() {
     return (
         <Router>
@@ -18,6 +18,7 @@ function App() {
                 <Route path="/register-club" element={<ClubRegistrationPage />} />
                 <Route path="/club-application" element={<ClubApplication />} />
                 <Route path="/admin" element={<AdminPage />} />
+                <Route path="/clubs/:id" element={<ClubDetailPage />} />
             </Routes>
         </Router>
     )
