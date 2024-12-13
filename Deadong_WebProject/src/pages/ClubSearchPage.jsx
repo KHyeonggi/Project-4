@@ -33,7 +33,8 @@ const ClubSearchPage = () => {
     }, []);
 
     const filteredClubs = clubs.filter(club =>
-        club.name.toLowerCase().includes(searchTerm.toLowerCase())
+        club.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        club.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
     );
 
     const handleRegisterClick = () => {
@@ -58,7 +59,7 @@ const ClubSearchPage = () => {
             </div>
             <input
                 type="text"
-                placeholder="동아리명을 입력하세요"
+                placeholder="동아리명이나 태그를 입력하세요"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-input"
