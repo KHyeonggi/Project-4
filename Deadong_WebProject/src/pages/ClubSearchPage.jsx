@@ -1,49 +1,58 @@
-import React, { useState, useEffect } from 'react'
-import { collection, getDocs } from 'firebase/firestore'
-import { useNavigate } from 'react-router-dom'
-import { db } from '../apikey'
-import ClubCard from '../components/ClubCard'
-import '../index.css'
+import React, { useState, useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { db } from '../apikey';
+import ClubCard from '../components/ClubCard';
+import '../index.css';
+import faceImage from '../assets/face.png';
+
 
 const ClubSearchPage = () => {
-    const navigate = useNavigate()
-    const [searchTerm, setSearchTerm] = useState('')
-    const [clubs, setClubs] = useState([])
-    const [loading, setLoading] = useState(true)
+    const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState('');
+    const [clubs, setClubs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchClubs = async () => {
             try {
-                const querySnapshot = await getDocs(collection(db, 'clubs'))
-                const clubs = querySnapshot.docs
-                    .map((doc) => ({ id: doc.id, ...doc.data() }))
-                    .filter((club) => club.approved)
-                setClubs(clubs)
-                setLoading(false)
+                const querySnapshot = await getDocs(collection(db, 'clubs'));
+                const clubsData = querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                setClubs(clubsData);
+                setLoading(false);
             } catch (error) {
-                console.error('Error fetching clubs:', error)
-                setLoading(false)
+                console.error('Error fetching clubs:', error);
+                setLoading(false);
             }
-        }
+        };
 
-        fetchClubs()
-    }, [])
+        fetchClubs();
+    }, []);
 
-    const filteredClubs = clubs.filter((club) => club.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filteredClubs = clubs.filter(club =>
+        club.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     const handleRegisterClick = () => {
-        navigate('/register-club')
-    }
+        navigate('/register-club');
+    };
 
     if (loading) {
-        return <div>로딩 중...</div>
+        return <div>로딩 중...</div>;
     }
 
     return (
         <div className="club-search-page">
             <div className="header">
+                <img src={faceImage} alt="face" width="100" height="100" className="round-image" />
                 <h1>동아리 검색</h1>
-                <button className="register-button" onClick={handleRegisterClick}>
+                <button 
+                    className="register-button"
+                    onClick={handleRegisterClick}
+                >
                     동아리 등록
                 </button>
             </div>
@@ -60,7 +69,7 @@ const ClubSearchPage = () => {
                 ))}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ClubSearchPage
+export default ClubSearchPage; 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
 import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
 import '../index.css';
-
+import faceImage from '../assets/face.png';
 const AdminPage = () => {
     const [pendingClubs, setPendingClubs] = useState([]);
     const [applications, setApplications] = useState([]);
@@ -65,7 +65,10 @@ const AdminPage = () => {
 
     return (
         <div className="admin-container">
-            <h1>관리자 페이지</h1>
+            <div className="header">
+                <img src={faceImage} alt="face" width="100" height="100" className="round-image" />
+                <h1>관리자 페이지</h1>
+            </div>
             
             <section className="pending-clubs-section">
                 <h2>동아리 승인 대기</h2>
