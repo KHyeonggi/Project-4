@@ -452,6 +452,7 @@ body {
     background-color: #0056b3;
 }
 .club-card img {
+    padding-top: 10px;
     width: 300px;
     height: 450px;
     object-fit: cover;
